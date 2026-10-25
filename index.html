@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Drone Orbit drones, cameras and accessories. Product enquiries via WhatsApp.">
+<title>Drone Orbit | Drones for a Bigger Tomorrow</title>
+<style>
+:root{--gold:#ffc400;--green:#13b95f;--ink:#101719;--muted:#657176;--paper:#f4f7f7;--line:#dce4e5}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink)}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
+.announce{text-align:center;background:#101719;color:white;padding:9px;font-size:11px;letter-spacing:.13em}
+.header{min-height:74px;padding:12px 6vw;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid #e8eded;background:#fff;position:sticky;top:0;z-index:5}
+.brand{font-weight:900;letter-spacing:-.03em;display:flex;align-items:center;gap:9px;font-size:23px;white-space:nowrap}.brand b{color:#d6a400}.mark{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:#101719;font-size:22px;border:3px solid #101719}
+.nav{display:flex;gap:25px;font-size:13px}.nav a:hover{color:#bc9200}.head-cta,.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--green);color:white;padding:12px 16px;border-radius:5px;font-weight:700;font-size:13px;border:0}.head-cta{background:#101719}
+.hero{min-height:440px;display:flex;align-items:center;padding:60px 8vw;color:white;background:linear-gradient(90deg,#091318ee 0%,#091318a8 52%,#09131822 100%),url('images/explorer-drone.svg') center/cover}
+.hero-content{max-width:620px}.eyebrow{font-size:11px;letter-spacing:.2em;font-weight:700;color:#b38b00}.hero .eyebrow{color:var(--gold)}h1{font-size:clamp(40px,6vw,72px);line-height:.99;letter-spacing:-.05em;margin:18px 0}h1 em,h2 em{font-family:Georgia,serif;font-weight:400;color:var(--gold)}.hero p:not(.eyebrow){max-width:490px;line-height:1.7;color:#e5ebec}.hero .wa-btn{background:var(--gold);color:#111;margin-top:14px;padding:15px 20px}
+.benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:24px 7vw;border-bottom:1px solid var(--line)}.benefits div{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--muted)}.benefits strong{display:block;color:var(--ink);font-size:13px;margin-bottom:4px}.benefit-icon{font-size:24px}
+.section{padding:60px 6vw}.heading{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:26px}.heading h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.04em;line-height:1.05;margin:10px 0}.intro{max-width:430px;color:var(--muted);font-size:14px;line-height:1.7}
+.shop{background:var(--paper)}.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.filter{border:1px solid var(--line);background:white;padding:10px 16px;font-size:12px}.filter.active{background:var(--ink);color:white;border-color:var(--ink)}
+.products{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.product{background:white;border:1px solid #e0e7e8;border-radius:9px;overflow:hidden;transition:transform .2s,box-shadow .2s}.product:hover{transform:translateY(-3px);box-shadow:0 10px 25px #1112}.product img{display:block;width:100%;height:220px;object-fit:cover;background:#e8eeee}.product-body{padding:15px 16px 17px}.product-body small{color:var(--muted);font-size:10px;letter-spacing:.13em}.product-body h3{font-size:16px;margin:9px 0}.price{font-weight:800;font-size:17px;margin:12px 0}.product .wa-btn{width:100%;margin-top:4px}.hint{font-size:12px;color:var(--muted);margin-top:17px}
+.story{display:grid;grid-template-columns:1fr 1fr;min-height:300px}.story-art{background:#e7eeee;display:grid;place-items:center;padding:25px}.story-art img{width:min(100%,550px);max-height:280px;object-fit:contain}.story-copy{background:#111a1e;color:white;padding:48px 7vw}.story-copy p:not(.eyebrow){color:#c7d0d2;line-height:1.8;font-size:14px}
+.availability{background:#101719;color:white;text-align:center}.availability .heading{display:block}.availability .heading p:last-child{max-width:600px;margin:0 auto;color:#c1cbcd;line-height:1.7;font-size:14px}.cities{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin:28px auto 0;max-width:850px}.city{padding:13px 22px;border:1px solid var(--gold);border-radius:7px;font-weight:700;font-size:13px}.city:before{content:'●';color:var(--gold);font-size:12px;margin-right:9px}
+.footer{background:#080d0f;color:white;padding:42px 7vw;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:30px}.footer p,.footer a{color:#bac4c6;font-size:12px;line-height:1.8}.footer strong{font-size:13px}.footer .brand{color:white}.copyright{grid-column:1/-1;text-align:center;border-top:1px solid #283235;padding-top:18px;margin:0}
+@media(max-width:850px){.header{flex-wrap:wrap}.nav{gap:14px;order:3;width:100%;justify-content:center}.benefits{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.footer{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.header{padding:12px 5vw}.brand{font-size:20px}.head-cta{font-size:11px;padding:10px}.nav{gap:12px;font-size:12px;overflow:auto;justify-content:flex-start}.hero{min-height:420px;padding:42px 6vw;background-position:58% center}.section{padding:44px 5vw}.heading{display:block}.intro{margin-top:12px}.benefits{padding:20px 5vw;gap:14px}.benefits div{align-items:flex-start}.products{grid-template-columns:1fr}.product img{height:230px}.story{grid-template-columns:1fr}.story-copy{padding:40px 6vw}.footer{grid-template-columns:1fr;gap:22px}.copyright{grid-column:auto}.city{padding:11px 15px}}
+</style>
+</head>
+<body>
+<div class="announce">DRONE ORBIT · PRODUCT ENQUIRIES VIA WHATSAPP</div>
+<header class="header">
+<a class="brand" href="#top" aria-label="Drone Orbit home"><span class="mark">◉</span><span>Drone <b>Orbit</b></span></a>
+<nav class="nav" aria-label="Main navigation"><a href="#top">Home</a><a href="#shop">Drones</a><a href="#shop">Cameras</a><a href="#shop">Accessories</a><a href="#story">About</a><a href="#contact">Contact</a></nav>
+<a class="head-cta" href="https://wa.me/919151293189?text=Hi%20Drone%20Orbit%2C%20I%20want%20to%20enquire%20about%20your%20products." target="_blank" rel="noopener">☏ Order on WhatsApp</a>
+</header>
+<main id="top">
+<section class="hero"><div class="hero-content"><p class="eyebrow">EXPLORE · CAPTURE · CREATE</p><h1>Drones for a<br><em>Bigger Tomorrow.</em></h1><p>High-quality drones, cameras and accessories for creators, professionals and enthusiasts. Choose a product and send your enquiry directly on WhatsApp.</p><a class="wa-btn" href="https://wa.me/919151293189?text=Hi%20Drone%20Orbit%2C%20I%20would%20like%20to%20enquire%20about%20a%20drone." target="_blank" rel="noopener">☏ Enquire on WhatsApp · +91 9151293189</a></div></section>
+<section class="benefits"><div><span class="benefit-icon">✓</span><span><strong>Genuine Products</strong>Original brands and warranty</span></div><div><span class="benefit-icon">⇢</span><span><strong>City Availability</strong>Check service coverage</span></div><div><span class="benefit-icon">⚙</span><span><strong>Expert Guidance</strong>Help choosing your gear</span></div><div><span class="benefit-icon">☏</span><span><strong>Direct Support</strong>Talk to us on WhatsApp</span></div></section>
+<section class="section shop" id="shop"><div class="heading"><div><p class="eyebrow">OUR PRODUCTS</p><h2>Explore Our <em>Range.</em></h2></div><p class="intro">To update products, edit <strong>products.js</strong> and add or replace images in the <strong>images</strong> folder. Product enquiries open WhatsApp with the selected details. No online checkout or payment is taken here.</p></div>
+<div class="filters" id="filters"><button class="filter active" data-cat="All">All products</button><button class="filter" data-cat="Drones">Drones</button><button class="filter" data-cat="Cameras">Cameras</button><button class="filter" data-cat="Accessories">Accessories</button></div><div class="products" id="products" aria-live="polite"></div><p class="hint">Prices are catalogue prices; confirm availability and final pricing with Drone Orbit on WhatsApp.</p></section>
+<section class="story" id="story"><div class="story-art"><img src="images/pro-flight-kit.svg" alt="Drone Orbit drone illustration" loading="lazy"></div><div class="story-copy"><p class="eyebrow">OUR APPROACH</p><h2>Find the right gear<br>for <em>your next view.</em></h2><p>Explore drones, cameras and accessories with straightforward product guidance. Send us the product you’re interested in and our team can discuss availability and next steps directly.</p><a class="wa-btn" href="https://wa.me/919151293189?text=Hi%20Drone%20Orbit%2C%20I%20need%20help%20choosing%20a%20product." target="_blank" rel="noopener">Chat with our team</a></div></section>
+<section class="section availability" id="availability"><div class="heading"><p class="eyebrow">WHERE TO FIND US</p><h2>We are available in <em>these cities.</em></h2><p>Contact us on WhatsApp to confirm product availability and service coverage in your city.</p></div><div class="cities"><span class="city">Noida</span><span class="city">Delhi</span><span class="city">Jaipur</span><span class="city">Hyderabad</span><span class="city">Mumbai</span><span class="city">Gorakhpur</span><span class="city">Lucknow</span></div></section>
+</main>
+<footer class="footer" id="contact"><div><a class="brand" href="#top"><span class="mark">◉</span><span>Drone <b>Orbit</b></span></a><p>Your direct contact for drones, cameras and accessories.</p></div><div><strong>Quick Links</strong><p><a href="#top">Home</a><br><a href="#shop">Drones & Cameras</a><br><a href="#availability">Service Cities</a></p></div><div><strong>Support</strong><p><a href="#story">About Us</a><br><a href="https://wa.me/919151293189" target="_blank" rel="noopener">Contact Us on WhatsApp</a><br>Product enquiries</p></div><div><strong>Get in Touch</strong><p>WhatsApp: <a href="https://wa.me/919151293189" target="_blank" rel="noopener">+91 9151293189</a><br>Email: <a href="mailto:info@droneorbit.in">info@droneorbit.in</a></p></div><p class="copyright">© <span id="year"></span> Drone Orbit. All rights reserved.</p></footer>
+<script>
+// Fallback catalogue: keeps the product grid working if products.js is accidentally omitted.
+// When products.js is present and defines products, that catalogue takes priority.
+const DEFAULT_PRODUCTS = [
+ {id:"explorer-drone",name:"Drone Orbit Explorer Drone",category:"Drones",price:"₹24,999",image:"images/explorer-drone.svg",description:"Explorer drone"},
+ {id:"pro-flight-kit",name:"Drone Orbit Pro Flight Kit",category:"Drones",price:"₹39,999",image:"images/pro-flight-kit.svg",description:"Pro flight kit"},
+ {id:"aerial-camera",name:"Aerial Capture Camera",category:"Cameras",price:"₹14,499",image:"images/aerial-camera.svg",description:"Aerial capture camera"},
+ {id:"creator-camera-kit",name:"Creator Camera Kit",category:"Cameras",price:"₹18,999",image:"images/creator-camera-kit.svg",description:"Creator camera kit"},
+ {id:"flight-battery-pack",name:"Flight Battery Pack",category:"Accessories",price:"₹3,499",image:"images/flight-battery-pack.svg",description:"Spare flight battery pack"},
+ {id:"travel-carry-case",name:"Travel Carry Case",category:"Accessories",price:"₹2,299",image:"images/travel-carry-case.svg",description:"Protective travel carry case"}
+];
+</script>
+<script src="products.js"></script>
+<script>
+const WHATSAPP_NUMBER = "919151293189";
+const productGrid = document.getElementById("products");
+const catalogue = Array.isArray(window.DRONE_ORBIT_PRODUCTS) && window.DRONE_ORBIT_PRODUCTS.length
+ ? window.DRONE_ORBIT_PRODUCTS : DEFAULT_PRODUCTS;
+function whatsappLink(product) {
+ const message = `Hi Drone Orbit, I am interested in ordering this product:\nProduct: ${product.name}\nCategory: ${product.category}\nListed price: ${product.price}\nPlease confirm availability and final price.`;
+ return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}
+function render(category="All") {
+ productGrid.innerHTML = "";
+ const chosen = catalogue.filter(p => category === "All" || p.category === category);
+ if (!chosen.length) { productGrid.innerHTML = "<p>No products in this category yet.</p>"; return; }
+ chosen.forEach(product => {
+  const card = document.createElement("article");
+  card.className = "product";
+  const link = whatsappLink(product);
+  const safeName = String(product.name || "Product").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const safeCategory = String(product.category || "Products").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const safePrice = String(product.price || "Contact for price").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const safeImage = String(product.image || "").replace(/["<>]/g, "");
+  card.innerHTML = `<a href="${link}" target="_blank" rel="noopener" aria-label="Enquire about ${safeName} on WhatsApp"><img src="${safeImage}" alt="${safeName}" loading="lazy" onerror="this.onerror=null;this.src='images/explorer-drone.svg';this.alt='Product image fallback';"></a><div class="product-body"><small>${safeCategory.toUpperCase()}</small><h3><a href="${link}" target="_blank" rel="noopener">${safeName}</a></h3><div class="price">${safePrice}</div><a class="wa-btn" href="${link}" target="_blank" rel="noopener">☏ Order on WhatsApp</a></div>`;
+  productGrid.appendChild(card);
+ });
+}
+document.querySelectorAll(".filter").forEach(button => button.addEventListener("click", () => {
+ document.querySelectorAll(".filter").forEach(item => item.classList.remove("active"));
+ button.classList.add("active");
+ render(button.dataset.cat);
+}));
+document.getElementById("year").textContent = new Date().getFullYear();
+render();
+</script>
+</body></html>
