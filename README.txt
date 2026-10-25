@@ -43,3 +43,5 @@ IMPORTANT
 This is a static catalogue/enquiry website, not online checkout. No online payment is taken.
 After changes, redeploy to Vercel for the live site to update. Keep all files and folders
 together in the project root.
+
+Drone Orbit website update
