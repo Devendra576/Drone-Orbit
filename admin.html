@@ -1,47 +1,653 @@
+
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Drone Orbit · Product Admin</title>
+
 <style>
-:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;color:#172126;background:#f2f6f6}*{box-sizing:border-box}body{margin:0}.top{background:#10191d;color:white;padding:18px max(20px,calc((100% - 1100px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:800;font-size:20px}.brand span{color:#f5c400}.wrap{max-width:1100px;margin:28px auto;padding:0 18px}.panel{background:white;border:1px solid #dce5e6;border-radius:14px;padding:22px;margin-bottom:20px;box-shadow:0 8px 24px #10202008}h1{font-size:25px;margin:0 0 8px}h2{font-size:19px;margin:0 0 18px}.muted{color:#627177;font-size:14px;line-height:1.5}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:7px;margin-bottom:15px}.field label{font-size:13px;font-weight:700}.field input,.field select,.field textarea{width:100%;border:1px solid #ccd7d9;border-radius:8px;padding:11px 12px;font:inherit;background:white}.field textarea{min-height:100px;resize:vertical}.btn{border:0;border-radius:8px;background:#10b963;color:white;font-weight:800;padding:12px 16px;cursor:pointer}.btn:disabled{opacity:.55;cursor:wait}.btn.dark{background:#172126}.btn.ghost{background:#edf2f2;color:#172126}.btn.danger{background:#b42318;padding:8px 10px}.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.status{font-size:13px;margin-top:12px;min-height:20px}.status.error{color:#b42318}.status.ok{color:#087443}.hidden{display:none!important}.preview{width:100%;max-width:240px;max-height:170px;object-fit:contain;background:#edf2f2;border-radius:8px;padding:6px}.product-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.item{border:1px solid #dce5e6;border-radius:10px;overflow:hidden}.item img{width:100%;height:140px;object-fit:contain;background:#edf2f2}.itembody{padding:12px}.item h3{font-size:15px;margin:0 0 6px}.item p{font-size:13px;color:#627177;margin:0 0 8px;white-space:pre-wrap}.price{font-weight:800;margin-bottom:10px}.small{font-size:12px;color:#627177}@media(max-width:700px){.grid{grid-template-columns:1fr}.product-list{grid-template-columns:repeat(2,minmax(0,1fr))}.top{padding:16px 18px}.wrap{margin-top:18px}.panel{padding:16px}}@media(max-width:430px){.product-list{grid-template-columns:1fr}}
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  color: #172126;
+  background: #f2f6f6;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+.top {
+  background: #10191d;
+  color: white;
+  padding: 18px max(20px, calc((100% - 1100px)/2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.brand { font-weight: 800; font-size: 20px; }
+.brand span { color: #f5c400; }
+.wrap {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 18px;
+}
+.panel {
+  background: white;
+  border: 1px solid #dce5e6;
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px #10202008;
+}
+h1 { font-size: 25px; margin: 0 0 8px; }
+h2 { font-size: 19px; margin: 0 0 18px; }
+.muted { color: #627177; font-size: 14px; line-height: 1.5; }
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 15px;
+}
+.field label { font-size: 13px; font-weight: 700; }
+.field input, .field select, .field textarea {
+  width: 100%;
+  border: 1px solid #ccd7d9;
+  border-radius: 8px;
+  padding: 11px 12px;
+  font: inherit;
+  background: white;
+}
+.field textarea { min-height: 100px; resize: vertical; }
+.btn {
+  border: 0;
+  border-radius: 8px;
+  background: #10b963;
+  color: white;
+  font-weight: 800;
+  padding: 12px 16px;
+  cursor: pointer;
+}
+.btn:disabled { opacity: .55; cursor: wait; }
+.btn.ghost { background: #edf2f2; color: #172126; }
+.btn.danger { background: #b42318; padding: 8px 10px; }
+.row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.status { font-size: 13px; margin-top: 12px; min-height: 20px; }
+.status.error { color: #b42318; }
+.status.ok { color: #087443; }
+.hidden { display: none !important; }
+.preview {
+  width: 100%;
+  max-width: 240px;
+  max-height: 170px;
+  object-fit: contain;
+  background: #edf2f2;
+  border-radius: 8px;
+  padding: 6px;
+}
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.item { border: 1px solid #dce5e6; border-radius: 10px; overflow: hidden; }
+.item img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+  background: #edf2f2;
+}
+.itembody { padding: 12px; }
+.item h3 { font-size: 15px; margin: 0 0 6px; }
+.item p {
+  font-size: 13px;
+  color: #627177;
+  margin: 0 0 8px;
+  white-space: pre-wrap;
+}
+.price { font-weight: 800; margin-bottom: 10px; }
+.small { font-size: 12px; color: #627177; }
+
+@media(max-width:700px) {
+  .grid { grid-template-columns: 1fr; }
+  .product-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .top { padding: 16px 18px; }
+  .wrap { margin-top: 18px; }
+  .panel { padding: 16px; }
+}
+@media(max-width:430px) {
+  .product-list { grid-template-columns: 1fr; }
+}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script>
-</head><body>
-<header class="top"><div class="brand">◉ Drone <span>Orbit</span> · Admin</div><button id="logout" class="btn ghost hidden">Sign out</button></header>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+</head>
+
+<body>
+<header class="top">
+  <div class="brand">◉ Drone <span>Orbit</span> · Admin</div>
+  <button id="logout" class="btn ghost hidden" type="button">Sign out</button>
+</header>
+
 <main class="wrap">
-<section id="configWarning" class="panel hidden"><h1>Finish setup first</h1><p class="muted">Open <code>supabase-config.js</code> and fill in your Supabase Project URL, publishable/anon key, and admin email. Do not paste a service-role key into this file.</p></section>
-<section id="loginPanel" class="panel hidden"><h1>Admin sign in</h1><p class="muted">Only the configured admin email can manage products. Use the account created in Supabase Authentication.</p><form id="loginForm"><div class="field"><label for="email">Admin email</label><input id="email" type="email" autocomplete="username" required></div><div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" required></div><button class="btn" type="submit">Sign in</button><p id="loginStatus" class="status" role="status"></p></form></section>
-<section id="appPanel" class="hidden">
-<div class="panel"><h1>Product manager</h1><p class="muted">Add a product and click Publish. It will appear on the public Drone Orbit website as soon as the database save succeeds.</p>
-<form id="productForm"><div class="grid"><div class="field"><label for="name">Product name *</label><input id="name" maxlength="160" required placeholder="e.g. Drone Orbit Explorer"></div><div class="field"><label for="price">Price in INR (₹) *</label><input id="price" type="number" min="0" step="0.01" required placeholder="24999"></div></div>
-<div class="grid"><div class="field"><label for="category">Category *</label><select id="category" required><option value="Drones">Drones</option><option value="Cameras">Cameras</option><option value="Accessories">Accessories</option></select></div><div class="field"><label for="image">Product image * (JPG, PNG, WebP or SVG; max 5 MB)</label><input id="image" type="file" accept="image/jpeg,image/png,image/webp,image/svg+xml" required><img id="preview" class="preview hidden" alt="Selected product preview"></div></div>
-<div class="field"><label for="description">Description *</label><textarea id="description" maxlength="3000" required placeholder="Describe the product and its key features"></textarea></div>
-<div class="row"><button id="publish" class="btn" type="submit">Publish product</button><button id="reset" class="btn ghost" type="reset">Clear form</button></div><p id="formStatus" class="status" role="status"></p></form></div>
-<div class="panel"><h2>Published products</h2><p class="muted">These products are currently stored in Supabase and visible on the storefront.</p><div id="productList" class="product-list"></div><p id="listStatus" class="status" role="status"></p></div>
-</section></main>
+
+  <section id="configWarning" class="panel hidden">
+    <h1>Finish setup first</h1>
+    <p class="muted">
+      Open <code>supabase-config.js</code> and fill in your Supabase
+      Project URL, publishable key, and admin email. Never use a
+      service-role or secret key in this file.
+    </p>
+  </section>
+
+  <section id="loginPanel" class="panel hidden">
+    <h1>Admin sign in</h1>
+    <p class="muted">
+      Only the configured admin emails can manage products.
+      Use an account created in Supabase Authentication.
+    </p>
+
+    <form id="loginForm">
+      <div class="field">
+        <label for="email">Admin email</label>
+        <input id="email" type="email" autocomplete="username" required>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password"
+          autocomplete="current-password" required>
+      </div>
+
+      <button class="btn" id="loginButton" type="submit">Sign in</button>
+      <p id="loginStatus" class="status" role="status"></p>
+    </form>
+  </section>
+
+  <section id="appPanel" class="hidden">
+    <div class="panel">
+      <h1>Product manager</h1>
+      <p class="muted">
+        Add a product and click Publish. It will appear on the public
+        Drone Orbit website once the database save succeeds.
+      </p>
+
+      <form id="productForm">
+        <div class="grid">
+          <div class="field">
+            <label for="name">Product name *</label>
+            <input id="name" maxlength="160" required
+              placeholder="e.g. Drone Orbit Explorer">
+          </div>
+
+          <div class="field">
+            <label for="price">Price in INR (₹) *</label>
+            <input id="price" type="number" min="0" step="0.01"
+              required placeholder="24999">
+          </div>
+        </div>
+
+        <div class="grid">
+          <div class="field">
+            <label for="category">Category *</label>
+            <select id="category" required>
+              <option value="Drones">Drones</option>
+              <option value="Cameras">Cameras</option>
+              <option value="Accessories">Accessories</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="image">Product image * (JPG, PNG, WebP or SVG; max 5 MB)</label>
+            <input id="image" type="file"
+              accept="image/jpeg,image/png,image/webp,image/svg+xml" required>
+            <img id="preview" class="preview hidden"
+              alt="Selected product preview">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="description">Description *</label>
+          <textarea id="description" maxlength="3000" required
+            placeholder="Describe the product and its key features"></textarea>
+        </div>
+
+        <div class="row">
+          <button id="publish" class="btn" type="submit">Publish product</button>
+          <button id="reset" class="btn ghost" type="reset">Clear form</button>
+        </div>
+
+        <p id="formStatus" class="status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+
+    <div class="panel">
+      <h2>Published products</h2>
+      <p class="muted">
+        These products are stored in Supabase and managed here.
+      </p>
+      <div id="productList" class="product-list"></div>
+      <p id="listStatus" class="status" role="status"></p>
+    </div>
+  </section>
+</main>
+
 <script>
 (() => {
- const url=window.DRONE_ORBIT_SUPABASE_URL, key=window.DRONE_ORBIT_SUPABASE_ANON_KEY, adminEmails=(window.DRONE_ORBIT_ADMIN_EMAILS||[]).map(e=>String(e).trim().toLowerCase()).filter(Boolean);
- const configured=url && key && adminEmails.length>0 && !url.includes('PASTE_') && !key.includes('PASTE_');
- const $=id=>document.getElementById(id); let sb=null, session=null;
- const money=n=>new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2}).format(Number(n));
- function status(el,msg,type=''){el.textContent=msg;el.className='status '+type;}
- function show(id,yes){$(id).classList.toggle('hidden',!yes)}
- if(!configured || !window.supabase){show('configWarning',true);return;}
- sb=window.supabase.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
- $('image').addEventListener('change',()=>{const f=$('image').files[0];if(!f){show('preview',false);return;}if(f.size>5*1024*1024){status($('formStatus'),'Image is larger than 5 MB. Choose a smaller file.','error');$('image').value='';show('preview',false);return;} $('preview').src=URL.createObjectURL(f);show('preview',true);});
- $('loginForm').addEventListener('submit',async e=>{e.preventDefault();status($('loginStatus'),'Signing in…');const {data,error}=await sb.auth.signInWithPassword({email:$('email').value.trim(),password:$('password').value});if(error){status($('loginStatus'),error.message,'error');return;}await handleSession(data.session);});
- $('logout').addEventListener('click',async()=>{await sb.auth.signOut();session=null;show('appPanel',false);show('logout',false);show('loginPanel',true);});
- sb.auth.onAuthStateChange((_event,newSession)=>{setTimeout(()=>handleSession(newSession),0)});
- async function handleSession(s){session=s;if(!s){show('loginPanel',true);show('appPanel',false);show('logout',false);return;}if(!adminEmails.includes((s.user.email||'').toLowerCase())){await sb.auth.signOut();show('loginPanel',true);status($('loginStatus'),'This account is not authorized to manage Drone Orbit.','error');return;}show('loginPanel',false);show('appPanel',true);show('logout',true);await loadProducts();}
- $('productForm').addEventListener('reset',()=>{setTimeout(()=>{show('preview',false);status($('formStatus'),'');},0)});
- $('productForm').addEventListener('submit',async e=>{e.preventDefault();if(!session){status($('formStatus'),'Please sign in again.','error');return;}const file=$('image').files[0];if(!file){status($('formStatus'),'Choose a product image.','error');return;}if(file.size>5*1024*1024){status($('formStatus'),'Image must be 5 MB or smaller.','error');return;}const ext=(file.name.split('.').pop()||'jpg').toLowerCase();if(!['jpg','jpeg','png','webp','svg'].includes(ext)){status($('formStatus'),'Use JPG, PNG, WebP or SVG.','error');return;}const btn=$('publish');btn.disabled=true;status($('formStatus'),'Uploading image…');
- try{const objectName=`${crypto.randomUUID()}.${ext}`;const {error:uploadError}=await sb.storage.from('product-images').upload(objectName,file,{cacheControl:'3600',upsert:false,contentType:file.type||undefined});if(uploadError)throw uploadError;const {data:publicData}=sb.storage.from('product-images').getPublicUrl(objectName);status($('formStatus'),'Saving product…');const payload={name:$('name').value.trim(),price:Number($('price').value),description:$('description').value.trim(),category:$('category').value,image_url:publicData.publicUrl};const {error:insertError}=await sb.from('products').insert(payload);if(insertError)throw insertError;$('productForm').reset();status($('formStatus'),'Published! The product is now available on the website.','ok');await loadProducts();}
- catch(err){status($('formStatus'),err.message||'Could not publish product. Check Supabase setup and policies.','error');}finally{btn.disabled=false;}
- });
- async function loadProducts(){status($('listStatus'),'Loading products…');const {data,error}=await sb.from('products').select('id,name,price,description,category,image_url,created_at').order('created_at',{ascending:false});if(error){status($('listStatus'),error.message,'error');return;}const list=$('productList');list.replaceChildren();if(!data.length){status($('listStatus'),'No products published yet.');return;}status($('listStatus'),`${data.length} published product(s).`,'ok');for(const p of data){const item=document.createElement('article');item.className='item';const img=document.createElement('img');img.src=p.image_url;img.alt=p.name;img.loading='lazy';const body=document.createElement('div');body.className='itembody';const title=document.createElement('h3');title.textContent=p.name;const cat=document.createElement('p');cat.textContent=p.category;const price=document.createElement('div');price.className='price';price.textContent=money(p.price);const desc=document.createElement('p');desc.textContent=p.description;const del=document.createElement('button');del.className='btn danger';del.textContent='Delete';del.addEventListener('click',()=>deleteProduct(p));body.append(title,cat,price,desc,del);item.append(img,body);list.append(item);}}
- async function deleteProduct(p){if(!confirm(`Delete “${p.name}” from the website?`))return;const {error}=await sb.from('products').delete().eq('id',p.id);if(error){status($('listStatus'),error.message,'error');return;}const marker='/product-images/';const idx=p.image_url.indexOf(marker);if(idx>=0){const path=p.image_url.slice(idx+marker.length);await sb.storage.from('product-images').remove([path]);}await loadProducts();}
- sb.auth.getSession().then(({data})=>handleSession(data.session));
+  "use strict";
+
+  const $ = id => document.getElementById(id);
+
+  const url = window.DRONE_ORBIT_SUPABASE_URL;
+  const key = window.DRONE_ORBIT_SUPABASE_ANON_KEY;
+
+  const adminEmails = (window.DRONE_ORBIT_ADMIN_EMAILS || [])
+    .map(email => String(email).trim().toLowerCase())
+    .filter(Boolean);
+
+  const configured = Boolean(
+    url && key && adminEmails.length &&
+    !url.includes("PASTE_") &&
+    !key.includes("PASTE_")
+  );
+
+  let sb = null;
+  let session = null;
+  let publishing = false;
+
+  const money = value =>
+    new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 2
+    }).format(Number(value));
+
+  function status(element, message, type = "") {
+    element.textContent = message;
+    element.className = "status " + type;
+  }
+
+  function show(id, visible) {
+    $(id).classList.toggle("hidden", !visible);
+  }
+
+  function errorMessage(error) {
+    return error && error.message
+      ? error.message
+      : "An unexpected error occurred. Please try again.";
+  }
+
+  if (!configured || !window.supabase) {
+    show("configWarning", true);
+    return;
+  }
+
+  sb = window.supabase.createClient(url, key, {
+    auth: {
+      persistSession: true,
+      autoRefreshToken: true,
+      detectSessionInUrl: true
+    }
+  });
+
+  // Product image preview and file-size validation.
+  $("image").addEventListener("change", () => {
+    const file = $("image").files[0];
+
+    if (!file) {
+      show("preview", false);
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      $("image").value = "";
+      show("preview", false);
+      status(
+        $("formStatus"),
+        "Image is larger than 5 MB. Choose a smaller file.",
+        "error"
+      );
+      return;
+    }
+
+    $("preview").src = URL.createObjectURL(file);
+    show("preview", true);
+    status($("formStatus"), "");
+  });
+
+  // Admin sign-in.
+  $("loginForm").addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const button = $("loginButton");
+    button.disabled = true;
+    status($("loginStatus"), "Signing in…");
+
+    try {
+      const { data, error } = await sb.auth.signInWithPassword({
+        email: $("email").value.trim(),
+        password: $("password").value
+      });
+
+      if (error) throw error;
+
+      await handleSession(data.session);
+    } catch (error) {
+      status($("loginStatus"), errorMessage(error), "error");
+    } finally {
+      button.disabled = false;
+    }
+  });
+
+  // Sign out.
+  $("logout").addEventListener("click", async () => {
+    const { error } = await sb.auth.signOut();
+
+    if (error) {
+      alert("Could not sign out: " + errorMessage(error));
+      return;
+    }
+
+    session = null;
+    show("appPanel", false);
+    show("logout", false);
+    show("loginPanel", true);
+    status($("loginStatus"), "");
+  });
+
+  sb.auth.onAuthStateChange((_event, newSession) => {
+    setTimeout(() => handleSession(newSession), 0);
+  });
+
+  async function handleSession(currentSession) {
+    session = currentSession;
+
+    if (!currentSession) {
+      show("loginPanel", true);
+      show("appPanel", false);
+      show("logout", false);
+      return;
+    }
+
+    const email = (currentSession.user.email || "").toLowerCase();
+
+    if (!adminEmails.includes(email)) {
+      await sb.auth.signOut();
+      session = null;
+      show("loginPanel", true);
+      show("appPanel", false);
+      show("logout", false);
+
+      status(
+        $("loginStatus"),
+        "This account is not authorized to manage Drone Orbit.",
+        "error"
+      );
+      return;
+    }
+
+    show("loginPanel", false);
+    show("appPanel", true);
+    show("logout", true);
+
+    await loadProducts();
+  }
+
+  // Clear form. Do not clear the publish status here:
+  // the success message is set after reset() completes.
+  $("productForm").addEventListener("reset", () => {
+    setTimeout(() => {
+      show("preview", false);
+    }, 0);
+  });
+
+  // Publish product.
+  $("productForm").addEventListener("submit", async event => {
+    event.preventDefault();
+
+    if (publishing) return;
+
+    if (!session) {
+      status($("formStatus"), "Please sign in again.", "error");
+      return;
+    }
+
+    const file = $("image").files[0];
+
+    if (!file) {
+      status($("formStatus"), "Choose a product image.", "error");
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      status($("formStatus"), "Image must be 5 MB or smaller.", "error");
+      return;
+    }
+
+    const ext = (file.name.split(".").pop() || "").toLowerCase();
+
+    if (!["jpg", "jpeg", "png", "webp", "svg"].includes(ext)) {
+      status($("formStatus"), "Use JPG, PNG, WebP or SVG.", "error");
+      return;
+    }
+
+    const price = Number($("price").value);
+
+    if (!Number.isFinite(price) || price < 0) {
+      status($("formStatus"), "Enter a valid non-negative price.", "error");
+      return;
+    }
+
+    publishing = true;
+    const button = $("publish");
+    button.disabled = true;
+
+    let uploadedObjectName = null;
+
+    try {
+      status($("formStatus"), "Uploading image…");
+
+      const objectName = crypto.randomUUID() + "." + ext;
+      uploadedObjectName = objectName;
+
+      const { error: uploadError } = await sb.storage
+        .from("product-images")
+        .upload(objectName, file, {
+          cacheControl: "3600",
+          upsert: false,
+          contentType: file.type || undefined
+        });
+
+      if (uploadError) throw uploadError;
+
+      const { data: publicData } = sb.storage
+        .from("product-images")
+        .getPublicUrl(objectName);
+
+      if (!publicData || !publicData.publicUrl) {
+        throw new Error("Could not obtain the uploaded image URL.");
+      }
+
+      const payload = {
+        name: $("name").value.trim(),
+        price,
+        description: $("description").value.trim(),
+        category: $("category").value,
+        image_url: publicData.publicUrl
+      };
+
+      if (!payload.name || !payload.description) {
+        throw new Error("Product name and description are required.");
+      }
+
+      status($("formStatus"), "Saving product…");
+
+      const { error: insertError } = await sb
+        .from("products")
+        .insert(payload);
+
+      if (insertError) throw insertError;
+
+      // Reset the native HTML form element, not a jQuery object.
+      document.getElementById("productForm").reset();
+      show("preview", false);
+
+      // Set success after reset so it remains visible.
+      status(
+        $("formStatus"),
+        "Published! The product has been saved.",
+        "ok"
+      );
+
+      await loadProducts();
+
+    } catch (error) {
+      status(
+        $("formStatus"),
+        errorMessage(error),
+        "error"
+      );
+
+      // If the database insert failed after the image uploaded,
+      // remove that unused image when possible.
+      if (uploadedObjectName) {
+        try {
+          await sb.storage
+            .from("product-images")
+            .remove([uploadedObjectName]);
+        } catch (_) {
+          // Preserve the original error message.
+        }
+      }
+    } finally {
+      publishing = false;
+      button.disabled = false;
+    }
+  });
+
+  // Load products from Supabase.
+  async function loadProducts() {
+    status($("listStatus"), "Loading products…");
+
+    try {
+      const { data, error } = await sb
+        .from("products")
+        .select("id,name,price,description,category,image_url,created_at")
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+
+      const list = $("productList");
+      list.replaceChildren();
+
+      if (!data || data.length === 0) {
+        status($("listStatus"), "No products published yet.");
+        return;
+      }
+
+      status(
+        $("listStatus"),
+        `${data.length} published product(s).`,
+        "ok"
+      );
+
+      for (const product of data) {
+        const item = document.createElement("article");
+        item.className = "item";
+
+        const img = document.createElement("img");
+        img.src = product.image_url;
+        img.alt = product.name;
+        img.loading = "lazy";
+
+        const body = document.createElement("div");
+        body.className = "itembody";
+
+        const title = document.createElement("h3");
+        title.textContent = product.name;
+
+        const category = document.createElement("p");
+        category.textContent = product.category;
+
+        const price = document.createElement("div");
+        price.className = "price";
+        price.textContent = money(product.price);
+
+        const description = document.createElement("p");
+        description.textContent = product.description;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "btn danger";
+        deleteButton.type = "button";
+        deleteButton.textContent = "Delete";
+        deleteButton.addEventListener("click", () => deleteProduct(product));
+
+        body.append(title, category, price, description, deleteButton);
+        item.append(img, body);
+        list.append(item);
+      }
+    } catch (error) {
+      status($("listStatus"), errorMessage(error), "error");
+    }
+  }
+
+  // Delete a product and its image.
+  async function deleteProduct(product) {
+    if (!confirm(`Delete "${product.name}" from the website?`)) return;
+
+    status($("listStatus"), "Deleting product…");
+
+    try {
+      const { error } = await sb
+        .from("products")
+        .delete()
+        .eq("id", product.id);
+
+      if (error) throw error;
+
+      const marker = "/product-images/";
+      const index = product.image_url.indexOf(marker);
+
+      if (index >= 0) {
+        const path = product.image_url.slice(index + marker.length);
+
+        const { error: storageError } = await sb.storage
+          .from("product-images")
+          .remove([path]);
+
+        if (storageError) {
+          console.warn("Product deleted, but image cleanup failed:", storageError);
+        }
+      }
+
+      await loadProducts();
+    } catch (error) {
+      status($("listStatus"), errorMessage(error), "error");
+    }
+  }
+
+  // Restore an existing session after page load.
+  sb.auth.getSession()
+    .then(({ data, error }) => {
+      if (error) {
+        status($("loginStatus"), errorMessage(error), "error");
+        show("loginPanel", true);
+        return;
+      }
+
+      return handleSession(data.session);
+    })
+    .catch(error => {
+      show("loginPanel", true);
+      status($("loginStatus"), errorMessage(error), "error");
+    });
+
 })();
-</script></body></html>
+</script>
+</body>
+</html>
