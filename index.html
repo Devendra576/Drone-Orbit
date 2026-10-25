@@ -11,7 +11,7 @@
 .header{min-height:74px;padding:12px 6vw;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid #e8eded;background:#fff;position:sticky;top:0;z-index:5}
 .brand{font-weight:900;letter-spacing:-.03em;display:flex;align-items:center;gap:9px;font-size:23px;white-space:nowrap}.brand b{color:#d6a400}.mark{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--gold);color:#101719;font-size:22px;border:3px solid #101719}
 .nav{display:flex;gap:25px;font-size:13px}.nav a:hover{color:#bc9200}.head-cta,.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--green);color:white;padding:12px 16px;border-radius:5px;font-weight:700;font-size:13px;border:0}.head-cta{background:#101719}
-.hero{min-height:440px;display:flex;align-items:center;padding:60px 8vw;color:white;background:linear-gradient(90deg,#091318ee 0%,#091318a8 52%,#09131822 100%),url('images/explorer-drone.svg') center/cover}
+.hero{min-height:440px;display:flex;align-items:center;padding:60px 8vw;color:white;background:linear-gradient(90deg,#091318ee 0%,#091318a8 52%,#09131822 100%),url('explorer-drone.svg') center/cover}
 .hero-content{max-width:620px}.eyebrow{font-size:11px;letter-spacing:.2em;font-weight:700;color:#b38b00}.hero .eyebrow{color:var(--gold)}h1{font-size:clamp(40px,6vw,72px);line-height:.99;letter-spacing:-.05em;margin:18px 0}h1 em,h2 em{font-family:Georgia,serif;font-weight:400;color:var(--gold)}.hero p:not(.eyebrow){max-width:490px;line-height:1.7;color:#e5ebec}.hero .wa-btn{background:var(--gold);color:#111;margin-top:14px;padding:15px 20px}
 .benefits{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:24px 7vw;border-bottom:1px solid var(--line)}.benefits div{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--muted)}.benefits strong{display:block;color:var(--ink);font-size:13px;margin-bottom:4px}.benefit-icon{font-size:24px}
 .section{padding:60px 6vw}.heading{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:26px}.heading h2{font-size:clamp(30px,4vw,44px);letter-spacing:-.04em;line-height:1.05;margin:10px 0}.intro{max-width:430px;color:var(--muted);font-size:14px;line-height:1.7}
@@ -40,50 +40,50 @@
 <section class="section availability" id="availability"><div class="heading"><p class="eyebrow">WHERE TO FIND US</p><h2>We are available in <em>these cities.</em></h2><p>Contact us on WhatsApp to confirm product availability and service coverage in your city.</p></div><div class="cities"><span class="city">Noida</span><span class="city">Delhi</span><span class="city">Jaipur</span><span class="city">Hyderabad</span><span class="city">Mumbai</span><span class="city">Gorakhpur</span><span class="city">Lucknow</span></div></section>
 </main>
 <footer class="footer" id="contact"><div><a class="brand" href="#top"><span class="mark">◉</span><span>Drone <b>Orbit</b></span></a><p>Your direct contact for drones, cameras and accessories.</p></div><div><strong>Quick Links</strong><p><a href="#top">Home</a><br><a href="#shop">Drones & Cameras</a><br><a href="#availability">Service Cities</a></p></div><div><strong>Support</strong><p><a href="#story">About Us</a><br><a href="https://wa.me/919151293189" target="_blank" rel="noopener">Contact Us on WhatsApp</a><br>Product enquiries</p></div><div><strong>Get in Touch</strong><p>WhatsApp: <a href="https://wa.me/919151293189" target="_blank" rel="noopener">+91 9151293189</a><br>Email: <a href="mailto:info@droneorbit.in">info@droneorbit.in</a></p></div><p class="copyright">© <span id="year"></span> Drone Orbit. All rights reserved.</p></footer>
-<script>
-// Fallback catalogue: keeps the product grid working if products.js is accidentally omitted.
-// When products.js is present and defines products, that catalogue takes priority.
-const DEFAULT_PRODUCTS = [
- {id:"explorer-drone",name:"Drone Orbit Explorer Drone",category:"Drones",price:"₹24,999",image:"images/explorer-drone.svg",description:"Explorer drone"},
- {id:"pro-flight-kit",name:"Drone Orbit Pro Flight Kit",category:"Drones",price:"₹39,999",image:"images/pro-flight-kit.svg",description:"Pro flight kit"},
- {id:"aerial-camera",name:"Aerial Capture Camera",category:"Cameras",price:"₹14,499",image:"images/aerial-camera.svg",description:"Aerial capture camera"},
- {id:"creator-camera-kit",name:"Creator Camera Kit",category:"Cameras",price:"₹18,999",image:"images/creator-camera-kit.svg",description:"Creator camera kit"},
- {id:"flight-battery-pack",name:"Flight Battery Pack",category:"Accessories",price:"₹3,499",image:"images/flight-battery-pack.svg",description:"Spare flight battery pack"},
- {id:"travel-carry-case",name:"Travel Carry Case",category:"Accessories",price:"₹2,299",image:"images/travel-carry-case.svg",description:"Protective travel carry case"}
-];
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
 <script src="products.js"></script>
 <script>
 const WHATSAPP_NUMBER = "919151293189";
 const productGrid = document.getElementById("products");
-const catalogue = Array.isArray(window.DRONE_ORBIT_PRODUCTS) && window.DRONE_ORBIT_PRODUCTS.length
- ? window.DRONE_ORBIT_PRODUCTS : DEFAULT_PRODUCTS;
+const DEFAULT_PRODUCTS = [
+ {id:"explorer-drone",name:"Drone Orbit Explorer Drone",category:"Drones",price:24999,image:"images/explorer-drone.svg",description:"Explorer drone"},
+ {id:"pro-flight-kit",name:"Drone Orbit Pro Flight Kit",category:"Drones",price:39999,image:"images/pro-flight-kit.svg",description:"Pro flight kit"},
+ {id:"aerial-camera",name:"Aerial Capture Camera",category:"Cameras",price:14499,image:"images/aerial-camera.svg",description:"Aerial capture camera"},
+ {id:"creator-camera-kit",name:"Creator Camera Kit",category:"Cameras",price:18999,image:"images/creator-camera-kit.svg",description:"Creator camera kit"},
+ {id:"flight-battery-pack",name:"Flight Battery Pack",category:"Accessories",price:3499,image:"images/flight-battery-pack.svg",description:"Spare flight battery pack"},
+ {id:"travel-carry-case",name:"Travel Carry Case",category:"Accessories",price:2299,image:"images/travel-carry-case.svg",description:"Protective travel carry case"}
+];
+let catalogue = (Array.isArray(window.DRONE_ORBIT_PRODUCTS) && window.DRONE_ORBIT_PRODUCTS.length ? window.DRONE_ORBIT_PRODUCTS : DEFAULT_PRODUCTS).map(p=>({...p, image: (p.image && !/^https?:\/\//i.test(p.image) && !p.image.startsWith('images/')) ? `images/${p.image}` : p.image}));
 function whatsappLink(product) {
- const message = `Hi Drone Orbit, I am interested in ordering this product:\nProduct: ${product.name}\nCategory: ${product.category}\nListed price: ${product.price}\nPlease confirm availability and final price.`;
+ const message = `Hi Drone Orbit, I am interested in ordering this product:\nProduct: ${product.name}\nCategory: ${product.category}\nListed price: ${formatPrice(product.price)}\nDescription: ${product.description || ''}\nPlease confirm availability and final price.`;
  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
+function formatPrice(value) { const n=Number(value); return Number.isFinite(n) ? new Intl.NumberFormat('en-IN',{style:'currency',currency:'INR',maximumFractionDigits:2}).format(n) : String(value || 'Contact for price'); }
+function escapeHtml(value) { return String(value ?? '').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function render(category="All") {
  productGrid.innerHTML = "";
  const chosen = catalogue.filter(p => category === "All" || p.category === category);
  if (!chosen.length) { productGrid.innerHTML = "<p>No products in this category yet.</p>"; return; }
  chosen.forEach(product => {
-  const card = document.createElement("article");
-  card.className = "product";
+  const card = document.createElement("article"); card.className = "product";
   const link = whatsappLink(product);
-  const safeName = String(product.name || "Product").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const safeCategory = String(product.category || "Products").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const safePrice = String(product.price || "Contact for price").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-  const safeImage = String(product.image || "").replace(/["<>]/g, "");
-  card.innerHTML = `<a href="${link}" target="_blank" rel="noopener" aria-label="Enquire about ${safeName} on WhatsApp"><img src="${safeImage}" alt="${safeName}" loading="lazy" onerror="this.onerror=null;this.src='images/explorer-drone.svg';this.alt='Product image fallback';"></a><div class="product-body"><small>${safeCategory.toUpperCase()}</small><h3><a href="${link}" target="_blank" rel="noopener">${safeName}</a></h3><div class="price">${safePrice}</div><a class="wa-btn" href="${link}" target="_blank" rel="noopener">☏ Order on WhatsApp</a></div>`;
+  const safeName=escapeHtml(product.name || 'Product'), safeCategory=escapeHtml(product.category || 'Products'), safePrice=escapeHtml(formatPrice(product.price)), safeImage=escapeHtml(product.image || 'images/explorer-drone.svg'), safeDesc=escapeHtml(product.description || '');
+  card.innerHTML = `<a href="${link}" target="_blank" rel="noopener" aria-label="Enquire about ${safeName} on WhatsApp"><img src="${safeImage}" alt="${safeName}" loading="lazy" onerror="this.onerror=null;this.src='images/explorer-drone.svg';this.alt='Product image unavailable';"></a><div class="product-body"><small>${safeCategory.toUpperCase()}</small><h3><a href="${link}" target="_blank" rel="noopener">${safeName}</a></h3><p>${safeDesc}</p><div class="price">${safePrice}</div><a class="wa-btn" href="${link}" target="_blank" rel="noopener">☏ Order on WhatsApp</a></div>`;
   productGrid.appendChild(card);
  });
 }
 document.querySelectorAll(".filter").forEach(button => button.addEventListener("click", () => {
- document.querySelectorAll(".filter").forEach(item => item.classList.remove("active"));
- button.classList.add("active");
- render(button.dataset.cat);
+ document.querySelectorAll(".filter").forEach(item => item.classList.remove("active")); button.classList.add("active"); render(button.dataset.cat);
 }));
 document.getElementById("year").textContent = new Date().getFullYear();
 render();
+async function loadPublishedProducts(){
+ const url=window.DRONE_ORBIT_SUPABASE_URL, key=window.DRONE_ORBIT_SUPABASE_ANON_KEY;
+ if(!window.supabase || !url || !key || url.includes('PASTE_') || key.includes('PASTE_')) return;
+ try { const client=window.supabase.createClient(url,key); const {data,error}=await client.from('products').select('id,name,price,description,category,image_url').order('created_at',{ascending:false}); if(error) throw error; if(data && data.length){catalogue=data.map(p=>({...p,image:p.image_url,price:Number(p.price)})); const active=document.querySelector('.filter.active'); render(active?.dataset.cat || 'All');} }
+ catch(err){ console.warn('Supabase catalogue unavailable; showing built-in catalogue.',err.message); }
+}
+loadPublishedProducts();
 </script>
 </body></html>
