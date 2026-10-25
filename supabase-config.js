@@ -1,4 +1,5 @@
-/* Supabase project configuration */
+
+/* Drone Orbit — Supabase configuration */
 window.DRONE_ORBIT_SUPABASE_URL = "https://zqahptyvmhhnwvorykpx.supabase.co";
 
 window.DRONE_ORBIT_SUPABASE_ANON_KEY =
